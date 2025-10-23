@@ -5,8 +5,20 @@
 "https://jsonplaceholder.typicode.com/users - адреса куди робити запит"
 
 function fetchUsers() {
-  // Ваш код
-}
+  return fetch('https://jsonplaceholder.typicode.com/users')
+  .then(response => response.json())
+  .then(users => {
+    const GetUser = users
+    .map(user => {
+      return {
+        id: user.id,
+      name: user.name
+      }
+    });
+    return GetUser;
+  })
+  .catch(error => console.error('Error:', error));
+  }
 
 console.log(fetchUsers())
 
